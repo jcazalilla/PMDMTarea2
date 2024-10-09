@@ -1,57 +1,68 @@
 package MorenoCazalilla.JesusMaria;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.ByteArrayOutputStream;
-import java.util.List;
+public class MiAdaptador extends RecyclerView.Adapter {
 
-public class MiAdaptador extends RecyclerView.Adapter<MiAdaptador.PersonajeViewHolder> {
-
-
-    List<Personaje> personajes;
+    private String[] miDataSet;
 
 
-    MiAdaptador(List<Personaje> personajes) {
-        this.personajes = personajes;
+    // Obtener referencias de los componentes visuales para cada elemento
+    // referencias de los TextViews e ImageView
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        public TextView textView;
+        public ImageView imageView
+
+        public ViewHolder(TextView tv, ImageView iv) {
+            super(v);
+            textView = tv;
+            imageView = iv;
+        }
     }
 
+    /**
+     * Constructor del Adaptador
+     */
+    public MiAdaptador(String[] miDataSet) {
+        this.miDataSet = miDataSet;
+    }
+
+    /**
+     * El layout invoca a este método
+     * para renderizar cada elemento del RecyclerView
+     */
     @NonNull
     @Override
-    public MiAdaptador.PersonajeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item, ViewGroup, false);
-        PersonajeViewHolder pvh = new PersonajeViewHolder(v);
-        return pvh;
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //creamos la vista
+
+        TextView v = (TextView) LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item, parent, false);
+
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull MiAdaptador.PersonajeViewHolder holder, int position) {
 
+    /**
+     * Este método asigna valores para cada elemento de la lista
+     */
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        //obtenemos un elemento del dataSet según su posición
+        // reemplazamos el contenido con el dato obtnido
+        holder.mTextView.setText(miDataSet[position]);
     }
 
     @Override
     public int getItemCount() {
-
-        return personajes.size();
-    }
-
-    public class PersonajeViewHolder {
-        CardView cv;
-        TextView personajeNombre;
-        ImageView personajeFoto;
-
-        public void PersonajeViewHolder(View itemView) {
-            super(itemView);
-            cv = (CardView) itemView.findViewById(R.id.cv);
-            personajeFoto = (ImageView) itemView.findViewById(R.id.iv_photo);
-            personajeNombre = (TextView) itemView.findViewById(R.id.tv_name);
-        }
+        return miDataSet.length;
     }
 }

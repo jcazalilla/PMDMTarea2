@@ -2,14 +2,14 @@ package MorenoCazalilla.JesusMaria;
 
 public class Personaje {
 
-    String nombre;
-    String descripcion;
-    int fotoID;
+    String name;
+    String description;
+    int photoID;
 
-    public Personaje(String nombre, String descripcion, int fotoID) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.fotoID = fotoID
+    public Personaje(String name, String description, int photoID) {
+        this.name = name;
+        this.description = description;
+        this.photoID = photoID;
 
     }
 }
