@@ -18,12 +18,12 @@ public class MiAdaptador extends RecyclerView.Adapter {
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView textView;
-        public ImageView imageView
+        public ImageView imageView;
 
         public ViewHolder(TextView tv, ImageView iv) {
             super(v);
-            textView = tv;
-            imageView = iv;
+            this.textView = tv;
+            this.imageView = iv;
         }
     }
 
@@ -58,7 +58,7 @@ public class MiAdaptador extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         //obtenemos un elemento del dataSet según su posición
         // reemplazamos el contenido con el dato obtnido
-        holder.mTextView.setText(miDataSet[position]);
+        holder.itemView.setText(miDataSet[position]);
     }
 
     @Override

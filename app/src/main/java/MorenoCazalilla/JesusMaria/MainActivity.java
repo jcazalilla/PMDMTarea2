@@ -17,11 +17,6 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView personajeNombre;
-    ImageView personajeFoto;
-
-    private RecyclerView miRecyclerView;
-    private MiAdaptador miAdaptador;
 
     /**
      * Nombres de los personajes
@@ -38,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        miRecyclerView = findViewById(R.id.recyclerView);
+        RecyclerView miRecyclerView = findViewById(R.id.recyclerView);
         //mejor el rendimiento
         //miRecyclerView.setHasFixedSize(true);
 
@@ -47,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         miRecyclerView.setLayoutManager((layoutManager));
 
         //asociamos el adapter al RecyclerView
-        miAdaptador = new MiAdaptador(myDataSet);
+        MiAdaptador miAdaptador = new MiAdaptador(myDataSet);
         miRecyclerView.setAdapter(miAdaptador);
 
     }
